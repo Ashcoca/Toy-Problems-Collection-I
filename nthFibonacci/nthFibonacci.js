@@ -41,7 +41,7 @@ Edges: Input of 0?
 var nthFibonacci = function (n) {
 
   if (n === 0) {
-    return null;
+    return 0;
   } else if (n < 2) {
     return 1
   } else {
