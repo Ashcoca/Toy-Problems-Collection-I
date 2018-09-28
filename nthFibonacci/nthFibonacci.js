@@ -39,7 +39,8 @@ Edges: Input of 0?
 
 
 var nthFibonacci = function (n) {
-
+  //I initially had this as return null, but I saw the test was expecting integers so I've changed it.
+  //It isn't stated anywhere in the instructions that we should be returning integers, so I feel like returning null is a valid solution.
   if (n === 0) {
     return 0;
   } else if (n < 2) {
