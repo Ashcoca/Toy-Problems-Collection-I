@@ -20,8 +20,33 @@
  *
  */
 
+/*
+Strategy: 
+Example Fib(1-7): 1, 1, 2, 3, 5, 8, 13 etc.
+Sum of the previous two numbers
+Input: number of times to fib
+Output: The result of n fibs
+Constraints: None
+Edges: Input of 0?
+
+1.  We'll need a base case for n=1 and n=2, because we won't have previous numbers to add in those cases.
+2.  We'll use a true recursion equation, calling our original fn nthFibo
+3.  If n === 0 we'll return null
+4.  Check if n < 2, if it is we'll return 1
+5.  Else we'll call our recursion on fibo(n-1) + fibo(n-2)
+
+*/
+
+
 var nthFibonacci = function (n) {
-  // TODO: implement me!
+
+  if (n === 0) {
+    return null;
+  } else if (n < 2) {
+    return 1
+  } else {
+    return nthFibonacci(n-2) + nthFibonacci(n-1)
+  }
 };
 
 
