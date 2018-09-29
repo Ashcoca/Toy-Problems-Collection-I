@@ -32,7 +32,25 @@
 
 // Feel free to add helper functions if needed.
 
+/*
+Strategy:
+1.  Can iterate over original array
+2.  Create placeholder variables to make it more readable (for me)
+3.  Check if the original index is less than the next index
+4.  If it is, swap them
+5.  Return the rearranged array!
+
+*/
+
 
 var bubbleSort = function(array) {
-  // Your code here.
+  for (var i = 0; i < array.length; i++) {
+    var original = array[i];
+    var nextIndex = array[i-1];
+    if (original < nextIndex) {
+      array[i] = nextIndex;
+      array[i-1] = original;
+    }
+  }
+  return array;
 };
