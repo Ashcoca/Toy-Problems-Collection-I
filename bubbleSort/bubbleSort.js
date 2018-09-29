@@ -40,17 +40,32 @@ Strategy:
 4.  If it is, swap them
 5.  Return the rearranged array!
 
+Second Try:
+Notes: Needs to iterate over entire array, not just the side by side arrays.
+This time we'll use a helper function that we can call recursively. More recursion practice, yay!
+We'll create a startIndex so we don't have to iterate over everything every time, increment the startIndex each recurse
+Base case will be if the startIndex === array.length because then there's nothing more to check.
+Move original function inside the helper
+Call helper on array, startIndex + 1 
+
 */
 
 
 var bubbleSort = function(array) {
-  for (var i = 0; i < array.length; i++) {
-    var original = array[i];
-    var nextIndex = array[i-1];
-    if (original < nextIndex) {
-      array[i] = nextIndex;
-      array[i-1] = original;
+  var startIndex = 0;
+    var helper = function(array, startIndex) {
+      if (startIndex === array.length) {
+        return array;
+      }
+      for (var i = startIndex; i < array.length; i++) {
+        var original = array[i];
+        var nextIndex = array[i-1];
+        if (original < nextIndex) {
+          array[i] = nextIndex;
+          array[i-1] = original;
+        }
+      }
+      return helper(array, startIndex+1);
     }
-  }
-  return array;
-};
+    return helper(array, 0);
+  };
