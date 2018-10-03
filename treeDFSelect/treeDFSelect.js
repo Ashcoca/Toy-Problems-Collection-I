@@ -30,12 +30,46 @@
  * Basic tree that stores a value.
  */
 
+ /*
+Strategy:
+I: Tree, value, how deep to search
+O: Flat array of nodes that pass the filter test
+C: None
+E: Empty tree?
+
+1.  We could create a recursive function that searches for the elements that are n levels deeps
+    a.  Do we need to increment the depth as we recurse? Or decremenent?
+2.  We then iterate over the children nodes and if they pass the test, we'll push them to our output
+    array and return that
+3.  Is it really this simple? Let's find out!
+
+ */
+
 var Tree = function(value) {
   this.value = value;
   this.children = [];
 };
 
+
 Tree.prototype.DFSelect = function(filter) {
+  var filtered = [];
+  //we'll need to take in a node
+  var helper = function(node, depth) {
+    //if the filter passes, push it to the output
+    if (filter(node.value)) {
+      filtered.push(node.value)
+    }
+    //else we'll continue recursing
+    //it shouldn't continue recursing if there aren't any children
+    for (var i = 0; i < node.children.length; i++) {
+        //add depth in case the filter is like the one in the example checking for depth to return
+        helper(node.children[i], depth + 1)
+    }
+  }
+    //initial call of helper on tree that is to the left of DFSelect function
+    helper(this, 0)
+    //return results
+    return filtered;
 };
 
 

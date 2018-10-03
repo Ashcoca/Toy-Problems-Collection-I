@@ -41,9 +41,7 @@ var commonCharacters = function(string1, string2) {
   for (var key in letterCount) {
     newStr += letterCount[key]
   }
-  console.log(newStr)
+  console.log(newStr);
   return newStr;
-
-
 };
 
