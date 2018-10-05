@@ -18,13 +18,13 @@
   var appleKeys = Object.keys(apple)
   var orangeKeys = Object.keys(orange)
     //first make sure these objects have the same length
-    if (obj1.length !== obj2.length) {
+    if (appleKeys.length !== orangeKeys.length) {
       return false;
     }
     //now we check to see if the keys are the same
     //.includes checks if array has a certain element, saves us a loop!
-    for (var i = 0; i < obj1.length; i++) {
-      if (!obj2.includes[obj1[i]]) {
+    for (var i = 0; i < appleKeys.length; i++) {
+      if (!orangeKeys.includes[appleKeys[i]]) {
         return false;
       }
     }
