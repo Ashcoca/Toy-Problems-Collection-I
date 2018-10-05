@@ -12,24 +12,28 @@
   *
   */
  var deepEquals = function(apple, orange) {
+//Removed recursion, not sure it's necessary, might be tho for some edge cases
 
-//Need to extrac the keys into arrays to compare
-var appleKeys = Object.keys(apple)
-var orangeKeys = Object.keys(orange)
-
-    var helper = function(obj1, obj2) {
-      //first make sure they objects have the same length
-      if (obj1.length !==obj2.length) {
+//Need to extracT the keys into arrays to compare, previous idea wasn't working
+  var appleKeys = Object.keys(apple)
+  var orangeKeys = Object.keys(orange)
+    //first make sure these objects have the same length
+    if (obj1.length !== obj2.length) {
+      return false;
+    }
+    //now we check to see if the keys are the same
+    //.includes checks if array has a certain element, saves us a loop!
+    for (var i = 0; i < obj1.length; i++) {
+      if (!obj2.includes[obj1[i]]) {
         return false;
       }
-      //now we check to see if the keys are the same
-      for (var i = 0; i < obj1.length; i++) {
-        if (!obj2.includes[obj1[i]]) {
-          return false;
-        }
-      }
-      return true;
-
     }
-    return helper(appleKeys, orangeKeys);
+    //finally we have to check if our values are the same!
+    for (var key in apple) {
+      if (apple[key] !== orange[key]) {
+        return false;
+      }
+    }
+    //if all those tests pass then we can return true
+    return true;
   };
