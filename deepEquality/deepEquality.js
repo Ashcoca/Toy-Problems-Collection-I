@@ -13,21 +13,23 @@
   */
  var deepEquals = function(apple, orange) {
 
+//Need to extrac the keys into arrays to compare
+var appleKeys = Object.keys(apple)
+var orangeKeys = Object.keys(orange)
+
     var helper = function(obj1, obj2) {
-      for (var key1 in obj1) {
-        for(var key2 in obj2) {
-          if (obj1[key1] === obj2[key2]) {
-          }
-          if (typeof obj1[key1] === 'object' && typeof obj2[key2] === 'object') {
-            helper(obj1[key1], obj2[key2])
-          }
-          if (obj1[key1] !== obj2[key2]) {
-            return false;
-        } else {
-          return true;
-        }
+      //first make sure they objects have the same length
+      if (obj1.length !==obj2.length) {
+        return false;
+      }
+      //now we check to see if the keys are the same
+      for (var i = 0; i < obj1.length; i++) {
+        if (!obj2.includes[obj1[i]]) {
+          return false;
         }
       }
+      return true;
+
     }
-    return helper(apple, orange);
+    return helper(appleKeys, orangeKeys);
   };
