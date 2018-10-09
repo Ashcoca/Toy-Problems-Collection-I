@@ -29,12 +29,14 @@ var powerSet = function(str) {
 
     var helper = function(oldStr, str) {
     if (str.length === 0) {
-        return [''];
+        return power;
     }
     for (var i = 0; i < str.length; i++) {
         //we add '' + the first letter
         power.push(oldStr + str[i]);
-        //then we call the helper on the next letter and set the oldStr to the letter that's already in the results array
+        //then we call the helper on the next letter and set the oldStr to the bits we just went over
+        console.log(power)
+        console.log(oldStr)
         helper(oldStr + str[i], str.slice(i + 1));
         }
     }
