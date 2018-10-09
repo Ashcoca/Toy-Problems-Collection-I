@@ -33,7 +33,7 @@ var powerSet = function(str) {
     }
     for (var i = 0; i < str.length; i++) {
         //we add '' + the first letter
-        if (power.contains(oldStr + str[i])) {
+        if (power.includes(oldStr + str[i])) {
             continue;
         }
         power.push(oldStr + str[i]);
