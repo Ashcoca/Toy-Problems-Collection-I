@@ -18,4 +18,26 @@
  */
 
 var powerSet = function(str) {
+    // //return an empty string if we're given an empty string
+    // if (str === '') {
+    //     return [''];
+    // }
+
+    //use array.sort() because split string makes an array we can sort
+    // var splitStr = str.split('').sort()
+    var power = [''];
+
+    var helper = function(oldStr, str) {
+    if (str.length === 0) {
+        return [''];
+    }
+    for (var i = 0; i < str.length; i++) {
+        //we add '' + the first letter
+        power.push(oldStr + str[i]);
+        //then we call the helper on the next letter and set the oldStr to the letter that's already in the results array
+        helper(oldStr + str[i], str.slice(i + 1));
+        }
+    }
+    helper('', str)
+    return power;
 };
