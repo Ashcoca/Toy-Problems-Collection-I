@@ -30,6 +30,22 @@
  * Basic tree that stores a value.
  */
 
+//We'll need to use a queue to maintain access to previous nodes we visited
+
+// var Queue = function() {
+//   var storage = [];
+
+//   this.enqueue = function(item) {
+//     storage.push(item);
+//   };
+
+//   this.dequeue = function() {
+//     return storage.shift();
+//   };
+
+// };
+
+
 var Tree = function(value) {
   this.value = value;
   this.children = [];
@@ -38,8 +54,33 @@ var Tree = function(value) {
 
 
 Tree.prototype.BFSelect = function(filter) {
-  // return an array of values for which the function filter(value, depth) returns true
+  var output = [];
+    //helper function to recurse
+    var helper = function(nodes, depth) {
+      var queue = [];
+    }
+    //loop through current queue
+    for (var i = 0; i < nodes.length; i++) {
+      if (filter(nodes[i].value, depth)) {
+        output.push(nodes[i].value);
+      }
+      //Add children nodes to queue
+      for (var j = 0; j < nodes[i].children.length; j++) {
+        queue.push(nodes[i].children[j]);
+      }
+    }
+    //if there are children, we'll need to recurse
+    if (queue.length > 0) {
+      helper(queue, depth + 1);
+    } else {
+      //base case, no more children return the output
+      return output;
+    }
+    helper(this, 0)
+    return output;
 };
+
+
 
 /**
  * You shouldn't need to change anything below here, but feel free to look.
