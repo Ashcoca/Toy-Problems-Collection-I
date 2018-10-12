@@ -33,7 +33,15 @@
 
 'use strict';
 
-var compose = function() {
+var compose = function(...funcs) {
+    return function(x)
+    var result = x;
+    for (var i = 0; i < funcs.length; i++) {
+        //set funcResults = funcs[i];
+        //apply funcResults to x?
+    }
+
+
 };
 
 var pipe = function() {

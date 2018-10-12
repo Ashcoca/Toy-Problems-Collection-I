@@ -33,9 +33,9 @@ var powerSet = function(str) {
     }
     for (var i = 0; i < str.length; i++) {
         //we add '' + the first letter
-        if (power.includes(oldStr + str[i])) {
-            continue;
-        }
+        // if (power.includes(oldStr + str[i])) {
+        //     continue;
+        // }
         power.push(oldStr + str[i]);
         //then we call the helper on the next letter and set the oldStr to the bits we just went over
         console.log(power)
