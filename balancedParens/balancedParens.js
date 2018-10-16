@@ -24,6 +24,34 @@
  *
  */
 var balancedParens = function(input) {
+    if (input.length % 2 !== 0) {
+        return false;
+    }
+    var start = input.split('');
+    var splitInput;
+    for (var i = 0; i < start.length; i++) {
+        if (start[i] === '(' || '{' || '[') {
+            splitInput = start.slice(i)
+        }
+    }
+    // var onlyBraces = input.replace(/[^a-zA-Z0-9-_]/g, '');
+    // console.log(onlyBraces)
+    var rightClose = 0;
+    var leftClose = 0;
+
+    for (var i = 0; i < splitInput.length; i++) {
+        if (splitInput[i] === '(' || '[' || '{') {
+            rightClose ++;
+        }
+        if (splitInput[i] === ')' || ']' || '}') {
+            leftClose ++;
+        }
+    }
+    if (leftClose !== rightClose) {
+        return false;
+    }
+    return true;
 };
 
+console.log(balancedParens('(())'));
 
