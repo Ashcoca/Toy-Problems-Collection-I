@@ -28,7 +28,7 @@
  *      cb('two');
  *    }, 100);
  *  }
- * ],
+ * ],       
  *  function(results){
  *    // the results array will equal ['one','two'] even though
  *    // the second function had a shorter timeout.
@@ -40,4 +40,20 @@
 
 
 var asyncMap = function(tasks, callback) {
+    let taskCount = 0;
+    let results = [];
+
+    for (var i = 0; i < tasks.length; i++) {
+        //better way to invoke?
+        tasks[i](function(result) {
+        //something is wrong here. Returning a 2 length empty arr in my tests instead of ["one", "two"]
+        // results[i] = (tasks[i]())
+        results[i] = result;
+        taskCount ++;
+            if (taskCount === tasks.length) {
+                //callback instead of return?
+                callback(results);
+            }
+        })
+    }
 };
