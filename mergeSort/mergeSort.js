@@ -1,4 +1,4 @@
-/**
+n/**
  * Implement a function that sorts an array of numbers using the "mergesort" algorithm.
  *
  * Mergesort is an optimized sorting algorithm which is a common choice to implement `sort`
@@ -97,6 +97,42 @@
 
 
 
-var mergeSort = function(array) {
-  // Your code here.
+var mergeSort = function(arr) {
+  if (arr.length === 1) {
+    //we want to return when there is only one item in arr
+    return arr;
+  };
+
+  //get the middle item of the array rounded down
+  const middle = Math.floor(arr.length / 2); 
+  //items on the left and right
+  const left = arr.slice(0, middle);
+  const right = arr.slice(middle);
+
+  return merge(mergeSort(left), mergeSort(right))
+
 };
+
+//compare the arrays item by item and return the concated result
+var merge = function(left, right) {
+  let result = [];
+  let leftIndex = 0;
+  let rightIndex = 0;
+
+  //while loops are used when you don't know the # of iterations
+  while (leftIndex < left.length && rightIndex < right.length) {
+    //if the item on the left is less than the item on the right
+    if (left[leftIndex] < right[rightIndex]) {
+      result.push(left[leftIndex])
+      //increment leftIndex so we can check the next item on the next loop
+      leftIndex++
+    } else {
+      //else we push and increment the rightIndex
+      result.push(right[rightIndex])
+      rightIndex++
+    }
+  }
+  //remaining part needs to be added to the results
+  return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex))
+
+}
