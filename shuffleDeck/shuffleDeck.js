@@ -32,7 +32,18 @@
  */
 
 var shuffleDeck = function(deck) {
-  // Your code here
+  let shuffled = [];
+  //loop through 52 times, can't use deck.length b/c then we only get 26 items???
+  for (var i = 0; i < 52; i++) {
+    //pick a random index
+    let randomIndex = Math.floor(deck.length * Math.random());
+    //put that randomIndex into our deck
+    shuffled.push(deck[randomIndex]);
+    //then remove it w/splice, removes 1 item from that randomIndex
+    deck.splice(randomIndex, 1);
+  }
+  return shuffled;
+
 };
 
 // Ordered deck generator provided for your testing convenience
