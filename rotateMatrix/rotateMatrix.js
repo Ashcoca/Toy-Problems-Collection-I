@@ -43,7 +43,29 @@
  *  - Make your function accept a parameter for the direction of rotation (1 = clockwise, -1 = counterclockwise)
  */
 
-var rotateMatrix = function(matrix
-) {
-  // Your code here.
+//MY NOTES
+/*
+[
+    [1, 2, 3],          [1, 4, 7],          [7, 4, 1],
+    [4, 5, 6],    ->    [2, 5, 8],   ->     [8, 5, 2]
+    [7, 8, 9]           [3, 6, 9]           [9, 6, 3]
+]
+Actually goes like differently
+
+*/
+
+var rotateMatrix = function(matrix) {
+
+  //need to flip the matrix to start
+  let rotated = matrix.reverse();
+  //this map iterates through the each item in the first row to give us the index
+  //it basically gives an index to the second line [0, 1, 2] so it runs once per index
+  let final = rotated[0].map((column, index) => (
+    //extracts single row from matrix [1, 4, 7] and moves it index column 0
+    //same thing for the next row [2, 5, 8] -. index column 1
+    rotated.map(row => row[index])
+  ));
+  return final;
+  //now we've flipped the matrix, but it isn't quite rotated properly.
+  //so we need to reverse it!
 };

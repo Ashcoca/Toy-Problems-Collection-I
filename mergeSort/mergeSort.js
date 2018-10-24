@@ -1,4 +1,4 @@
-n/**
+/**
  * Implement a function that sorts an array of numbers using the "mergesort" algorithm.
  *
  * Mergesort is an optimized sorting algorithm which is a common choice to implement `sort`
