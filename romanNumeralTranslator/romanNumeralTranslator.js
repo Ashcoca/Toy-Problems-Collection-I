@@ -28,6 +28,29 @@ var DIGIT_VALUES = {
 };
 
 var translateRomanNumeral = function(romanNumeral) {
-// TODO: Implement me!
+  let result = 0;
 
+  if (typeof romanNumeral === "string") {
+    let romanArray = romanNumeral.split('');
+
+    //loop through split numerals
+    for (var i = 0; i < romanArray.length; i++) {
+
+      //set the current char to the value from the DIGIT_VALUES table, same with nextChar
+      let currentChar = DIGIT_VALUES[romanArray[i]];
+      let nextChar = DIGIT_VALUES[romanArray[i+1]];
+
+      //if the currentChar is less, i.e. if it's an IV or IX situation...
+      if (currentChar < nextChar) {
+        //subtract the I value from the nextChar and add it to the result
+        result += nextChar - currentChar;
+        i++; //increment again since we're using two numerals here
+      } else {
+        result += currentChar;
+      }
+    }
+    return result;
+  } else {
+    return null;
+  };
 };
