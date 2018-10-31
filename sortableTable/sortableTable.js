@@ -9,7 +9,8 @@
  **/
 
 $(function () {
-  // TODO: your code here!
-
+  $('th').click(function() {
+    
+  })
 });
 
