@@ -45,22 +45,22 @@ var robotPaths = function(n, board, i, j) {
     //base case === if we've reached the end (target at 4, 4 assuming 5x5 grid)
     if (i === n - 1 && j === n - 1) {
       results ++;
-      return;
+      return results;
     };
-    //check if we can move up
-    if (i - 1 >= 0 && newBoard.hasBeenVisited(i - 1)) {
+    //check if we can move up i == rows, j == columns
+    if (i - 1 >= 0 && !newBoard.hasBeenVisited(i - 1)) {
       helper(i - 1, j)
     };
     //check if we can move down
-    if (i + 1 < n && newBoard.hasBeenVisited(i + 1)) {
+    if (i + 1 < n && !newBoard.hasBeenVisited(i + 1)) {
       helper(i + 1, j)
     };
     //check if we can move to the right
-    if (j + 1 < n && newBoard.hasBeenVisited(j + 1)) {
+    if (j + 1 < n && !newBoard.hasBeenVisited(j + 1)) {
       helper(i, j + 1)
     };
     //check if we can move to the left
-    if (j - 1 >= 0 && newBoard.hasBeenVisited(j - 1)) {
+    if (j - 1 >= 0 && !newBoard.hasBeenVisited(j - 1)) {
       helper(i, j - 1)
     };
   }
