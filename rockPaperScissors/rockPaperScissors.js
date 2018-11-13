@@ -18,44 +18,28 @@
 */
 
 /*
-Strategy:
-So I could use a random number generator and assign each number to either
-rock or paper or scissors. 
-We'll use a helper function to generate an array with random numbers
-Reassign those random numbers to strings.
-
-
+Use a while loop
+  // let maxPlays = Math.pow(number, number);
+  // while(maxPlays > 0) {
+  //   let temp = [];
+  // }
 */
-var rockPaperScissors = function (array) {
-  var moves = [1, 2, 3];
-  
-  //we'll use this helper function to generate uniquely random output arrays
-  var helper = function(array) {
-   var copyArr = array.slice()
-    for (var i = copyArr.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var temp = copyArr[i];
-      copyArr[i] = copyArr[j];
-      copyArr[j] = temp;
+var rockPaperScissors = function (number) {
+  let results = [];
+  let plays = ["rock", "paper", "scissors"]
+  let rounds = number;
+  let helper = function(playedSoFar, rounds) {    
+    if (rounds === 0) {
+      results.push(playedSoFar);
     }
-  return copyArr;
+    else {
+      for (let i = 0; i < plays.length; i++) {
+        //concat or push?
+        helper(playedSoFar.concat(plays[i]), rounds-1);
+      }
+    }
   };
-//here we'll try to replace the numbers with either rock paper or scissors
-//depending on the randomly generated output array
-//This all should be refactored back into my helper function, I don't need
-//to have made so many variables.
-var game = [];
-var output = helper(moves);
-  for (var k = 0; k < output.length; k++) {
-    if (output[k] == 1) {
-      game.push('rock');
-    } else if (output[k] == 2) {
-      game.push('paper');
-    } else if (output[k] == 3) {
-      game.push('scissors');
-    }
-  console.log(game)
-  return game;
-  }
+  helper([], rounds);
+  return results;
 };
 
