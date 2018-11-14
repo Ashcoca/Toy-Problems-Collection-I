@@ -23,6 +23,9 @@ Use a while loop
   // while(maxPlays > 0) {
   //   let temp = [];
   // }
+  ????
+
+  could also solve with 3 for loops
 */
 var rockPaperScissors = function (number) {
   let results = [];
