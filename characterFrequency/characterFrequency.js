@@ -37,5 +37,22 @@
 
 
 var characterFrequency = function(string) {
+  let result = [];
+  let current = string.slice(0, 1);
+
+  let helper = function(string, start, letter) {
+    let count = 0;
+    for (var i = start; i < string.length; i++) {
+      if (string[i] === current) {
+        count++;
+      }
+      result.push([string[i], count])
+      if (string.length > 0) {
+        current = string.splice(start + 1, start + 2)
+        helper(string, start + 1, current)
+      }
+    }
+  }
+  helper(string, 0, current)
   return result;
 };
