@@ -11,5 +11,19 @@
 */
 
 var evenOccurrence = function(arr) {
-  // Your code here.
+  let count = 0;
+  let result = null;
+  //remember to sort the array, can be solved faster this way
+  arr = arr.sort();
+  for (let i = 0; i < arr.length; i++) {
+    count = 1;
+    if (arr[i] === arr[i+1]) {
+      result = arr[i]
+      count++;
+    }
+    if (count % 2 === 0) {
+      return result;
+    }
+  }
+  return result;
 };
